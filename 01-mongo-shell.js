@@ -152,4 +152,27 @@ db.posts.find({},
 		"content": 1, 
 		"hit": 1 
 	}
-)
+)
+        
+// posts 컬렉션에서 전체문서 대상, 
+//	title, hit 필드 출력, _id 가리기
+//	2개 건너 뛰고, 4개 출력
+db.posts.find({}, 
+	{ "title":1, "hit": 1 }
+)
+
+db.posts.find({},
+	{ "title": 1, "hit": 1 }
+).limit(4).skip(2)
+        
+// 정렬 .sort
+//	정렬 기준 필드: 1 (오름차순), -1 (내림차순)
+// hit 필드의 오름차순으로 정렬
+db.posts.find({},
+	{ "title": 1, "hit": 1 }
+).sort({ "hit": 1 }) // 오름차순
+
+// hit 필드의 내림차순으로 정렬
+db.posts.find({},
+	{ "title": 1, "hit": 1 }
+).sort({ "hit": -1 }) // 내림차순
